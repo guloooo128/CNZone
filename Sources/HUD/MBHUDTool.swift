@@ -20,17 +20,19 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view: UIView = view ?? UIApplication.shared.keyWindow!
-        let h = MBProgressHUD.showAdded(to: view, animated: true)
-        h.mode = .customView
-        h.update(blurEffect: HUD.blurEffectStyle)
-        let image = UIImage(named: "infomation")!
-        image.withRenderingMode(.alwaysTemplate)
-        h.customView = UIImageView(image: image)
-        h.label.text = title
-        h.detailsLabel.text = subTitle
-        
-        hud = h
+        let view = view ?? getKeyWindow()
+        if let view {
+            let h = MBProgressHUD.showAdded(to: view, animated: true)
+            h.mode = .customView
+            h.update(blurEffect: HUD.blurEffectStyle)
+            let image = UIImage(named: "infomation")!
+            image.withRenderingMode(.alwaysTemplate)
+            h.customView = UIImageView(image: image)
+            h.label.text = title
+            h.detailsLabel.text = subTitle
+            
+            hud = h
+        }
     }
     
     public func dismiss() {
@@ -43,14 +45,16 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view: UIView = view ?? UIApplication.shared.keyWindow!
-        let h = MBProgressHUD.showAdded(to: view, animated: true)
-        h.mode = .indeterminate
-        h.update(blurEffect: HUD.blurEffectStyle)
-        h.label.text = title
-        h.detailsLabel.text = subTitle
-        
-        hud = h
+        let view = view ?? getKeyWindow()
+        if let view {
+            let h = MBProgressHUD.showAdded(to: view, animated: true)
+            h.mode = .indeterminate
+            h.update(blurEffect: HUD.blurEffectStyle)
+            h.label.text = title
+            h.detailsLabel.text = subTitle
+            
+            hud = h
+        }
     }
     
     func showSuccess(onView view: UIView? = nil, title: String? = nil, subTitle: String? = nil) {
@@ -58,17 +62,19 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view: UIView = view ?? UIApplication.shared.keyWindow!
-        let h = MBProgressHUD.showAdded(to: view, animated: true)
-        h.mode = .customView
-        h.update(blurEffect: HUD.blurEffectStyle)
-        let image = UIImage(named: "Checkmark")!
-        image.withRenderingMode(.alwaysTemplate)
-        h.customView = UIImageView(image: image)
-        h.label.text = title
-        h.detailsLabel.text = subTitle
-        
-        hud = h
+        let view = view ?? getKeyWindow()
+        if let view {
+            let h = MBProgressHUD.showAdded(to: view, animated: true)
+            h.mode = .customView
+            h.update(blurEffect: HUD.blurEffectStyle)
+            let image = UIImage(named: "Checkmark")!
+            image.withRenderingMode(.alwaysTemplate)
+            h.customView = UIImageView(image: image)
+            h.label.text = title
+            h.detailsLabel.text = subTitle
+            
+            hud = h
+        }
     }
     
     func showInfo(onView view: UIView? = nil, title: String? = nil, subTitle: String? = nil) {
@@ -76,17 +82,19 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view: UIView = view ?? UIApplication.shared.keyWindow!
-        let h = MBProgressHUD.showAdded(to: view, animated: true)
-        h.mode = .customView
-        h.update(blurEffect: HUD.blurEffectStyle)
-        let image = UIImage(named: "infomation")!
-        image.withRenderingMode(.alwaysTemplate)
-        h.customView = UIImageView(image: image)
-        h.label.text = title
-        h.detailsLabel.text = subTitle
-        
-        hud = h
+        let view = view ?? getKeyWindow()
+        if let view {
+            let h = MBProgressHUD.showAdded(to: view, animated: true)
+            h.mode = .customView
+            h.update(blurEffect: HUD.blurEffectStyle)
+            let image = UIImage(named: "infomation")!
+            image.withRenderingMode(.alwaysTemplate)
+            h.customView = UIImageView(image: image)
+            h.label.text = title
+            h.detailsLabel.text = subTitle
+            
+            hud = h
+        }
     }
 }
 
@@ -102,6 +110,15 @@ extension MBProgressHUD {
     func update(backgroundColor: UIColor) {
         bezelView.style = .solidColor
         bezelView.backgroundColor = HUD.backgroundColor
+    }
+    
+    func getKeyWindow() -> UIWindow? {
+       return UIApplication
+            .shared
+            .connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .last { $0.isKeyWindow }
     }
 }
 #endif
