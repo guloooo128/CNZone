@@ -20,8 +20,8 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view = view ?? getKeyWindow()
-        if let view {
+        let view: UIView? = view ?? getKeyWindow()
+        if let view = view {
             let h = MBProgressHUD.showAdded(to: view, animated: true)
             h.mode = .customView
             h.update(blurEffect: HUD.blurEffectStyle)
@@ -45,8 +45,8 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view = view ?? getKeyWindow()
-        if let view {
+        let view: UIView? = view ?? getKeyWindow()
+        if let view = view {
             let h = MBProgressHUD.showAdded(to: view, animated: true)
             h.mode = .indeterminate
             h.update(blurEffect: HUD.blurEffectStyle)
@@ -62,8 +62,8 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view = view ?? getKeyWindow()
-        if let view {
+        let view: UIView? = view ?? getKeyWindow()
+        if let view = view {
             let h = MBProgressHUD.showAdded(to: view, animated: true)
             h.mode = .customView
             h.update(blurEffect: HUD.blurEffectStyle)
@@ -82,8 +82,8 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view = view ?? getKeyWindow()
-        if let view {
+        let view: UIView? = view ?? getKeyWindow()
+        if let view = view {
             let h = MBProgressHUD.showAdded(to: view, animated: true)
             h.mode = .customView
             h.update(blurEffect: HUD.blurEffectStyle)
@@ -95,6 +95,15 @@ extension MBHUDTool: ProgressHUD {
             
             hud = h
         }
+    }
+    
+    private func getKeyWindow() -> UIWindow? {
+       return UIApplication
+            .shared
+            .connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .last { $0.isKeyWindow }
     }
 }
 
@@ -110,15 +119,6 @@ extension MBProgressHUD {
     func update(backgroundColor: UIColor) {
         bezelView.style = .solidColor
         bezelView.backgroundColor = HUD.backgroundColor
-    }
-    
-    func getKeyWindow() -> UIWindow? {
-       return UIApplication
-            .shared
-            .connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .flatMap { $0.windows }
-            .last { $0.isKeyWindow }
     }
 }
 #endif
