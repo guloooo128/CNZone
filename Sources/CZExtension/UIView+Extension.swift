@@ -34,6 +34,15 @@ public extension CZExtension where Base: UIView {
         }
         return views
     }
+    
+    static func keywindow() -> UIWindow? {
+        return UIApplication
+             .shared
+             .connectedScenes
+             .compactMap { $0 as? UIWindowScene }
+             .flatMap { $0.windows }
+             .last { $0.isKeyWindow }
+    }
 }
 
 public extension CZExtension where Base: UIView {

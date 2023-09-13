@@ -20,7 +20,7 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view: UIView? = view ?? getKeyWindow()
+        let view: UIView? = view ?? MainApp.keyWindow
         if let view = view {
             let h = MBProgressHUD.showAdded(to: view, animated: true)
             h.mode = .customView
@@ -29,8 +29,8 @@ extension MBHUDTool: ProgressHUD {
             image.withRenderingMode(.alwaysTemplate)
             h.customView = UIImageView(image: image)
             h.label.text = title
+            h.label.numberOfLines = 5
             h.detailsLabel.text = subTitle
-            
             hud = h
         }
     }
@@ -45,14 +45,13 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view: UIView? = view ?? getKeyWindow()
+        let view: UIView? = view ?? MainApp.keyWindow
         if let view = view {
             let h = MBProgressHUD.showAdded(to: view, animated: true)
             h.mode = .indeterminate
             h.update(blurEffect: HUD.blurEffectStyle)
             h.label.text = title
             h.detailsLabel.text = subTitle
-            
             hud = h
         }
     }
@@ -62,7 +61,7 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view: UIView? = view ?? getKeyWindow()
+        let view: UIView? = view ?? MainApp.keyWindow
         if let view = view {
             let h = MBProgressHUD.showAdded(to: view, animated: true)
             h.mode = .customView
@@ -71,8 +70,8 @@ extension MBHUDTool: ProgressHUD {
             image.withRenderingMode(.alwaysTemplate)
             h.customView = UIImageView(image: image)
             h.label.text = title
+            h.label.numberOfLines = 5
             h.detailsLabel.text = subTitle
-            
             hud = h
         }
     }
@@ -82,7 +81,7 @@ extension MBHUDTool: ProgressHUD {
             hud.hide(animated: true)
         }
         hud = nil
-        let view: UIView? = view ?? getKeyWindow()
+        let view: UIView? = view ?? MainApp.keyWindow
         if let view = view {
             let h = MBProgressHUD.showAdded(to: view, animated: true)
             h.mode = .customView
@@ -91,19 +90,10 @@ extension MBHUDTool: ProgressHUD {
             image.withRenderingMode(.alwaysTemplate)
             h.customView = UIImageView(image: image)
             h.label.text = title
+            h.label.numberOfLines = 5
             h.detailsLabel.text = subTitle
-            
             hud = h
         }
-    }
-    
-    private func getKeyWindow() -> UIWindow? {
-       return UIApplication
-            .shared
-            .connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .flatMap { $0.windows }
-            .last { $0.isKeyWindow }
     }
 }
 

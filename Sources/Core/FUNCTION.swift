@@ -15,7 +15,7 @@ import UIKit
 public func getCurrentVC() -> UIViewController {
     var result: UIViewController?
 
-    var window = UIApplication.shared.keyWindow
+    var window = MainApp.keyWindow
 
     if window?.windowLevel != UIWindow.Level.normal {
         let windows = UIApplication.shared.windows

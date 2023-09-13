@@ -22,7 +22,7 @@ extension CZExtension where Base: UIScreen {
 
     /// safe area width
     static func widthOfSafeArea() -> CGFloat {
-        guard let rootView = UIApplication.shared.keyWindow else { return 0 }
+        guard let rootView = MainApp.keyWindow else { return 0 }
 
         if #available(iOS 11.0, *) {
             let leftInset = rootView.safeAreaInsets.left
@@ -38,7 +38,7 @@ extension CZExtension where Base: UIScreen {
 
     /// safe area height
     static func heightOfSafeArea() -> CGFloat {
-        guard let rootView = UIApplication.shared.keyWindow else { return 0 }
+        guard let rootView =  MainApp.keyWindow else { return 0 }
 
         if #available(iOS 11.0, *) {
             let topInset = rootView.safeAreaInsets.top

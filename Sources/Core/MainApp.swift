@@ -32,11 +32,11 @@ public enum MainApp {
 
     @available(iOS 13, *)
     public static var keyWindow: UIWindow? {
-        UIApplication.shared.connectedScenes
-            .filter { $0.activationState == .foregroundActive }
-            .map { $0 as? UIWindowScene }
-            .compactMap { $0 }
-            .first?.windows
-            .filter(\.isKeyWindow).first ?? nil
+        UIApplication
+             .shared
+             .connectedScenes
+             .compactMap { $0 as? UIWindowScene }
+             .flatMap { $0.windows }
+             .last { $0.isKeyWindow }
     }
 }
