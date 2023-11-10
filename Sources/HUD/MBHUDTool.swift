@@ -66,7 +66,7 @@ extension MBHUDTool: ProgressHUD {
         if let view = view {
             let h = MBProgressHUD.showAdded(to: view, animated: true)
             h.mode = .customView
-            h.update(blurEffect: HUD.blurEffectStyle)
+//            h.update(blurEffect: HUD.blurEffectStyle)
             let imv = ArtisseLoadingView(frame: .zero)
             imv.startAnimating()
             h.customView = imv
