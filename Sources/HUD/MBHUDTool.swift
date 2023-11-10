@@ -70,7 +70,7 @@ extension MBHUDTool: ProgressHUD {
             let imv = ArtisseLoadingView(frame: .zero)
             imv.startAnimating()
             h.customView = imv
-            h.update(backgroundColor: .clear)
+            h.clearBackgroundColor()
             hud = h
         }
     }
@@ -128,6 +128,10 @@ extension MBProgressHUD {
     func update(backgroundColor: UIColor) {
         bezelView.style = .solidColor
         bezelView.backgroundColor = HUD.backgroundColor
+    }
+    
+    func clearBackgroundColor() {
+        bezelView.backgroundColor = .clear
     }
 }
 
