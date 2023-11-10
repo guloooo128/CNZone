@@ -44,7 +44,7 @@ public class HUD: NSObject {
 
 extension HUD {
     public enum HUDType {
-        case error, info, success, loading
+        case error, info, success, loading, mumuLoading
     }
 
     func show(_ message: String? = nil, subMessage: String? = nil, type: HUDType, onView: UIView? = nil, time: TimeInterval = 1, callBack: (() -> Void)?) {
@@ -58,9 +58,11 @@ extension HUD {
                 tool.showSuccess(onView: onView, title: message, subTitle: subMessage)
             case .loading:
                 tool.showLoading(onView: onView, title: message, subTitle: subMessage)
+            case .mumuLoading:
+                tool.showMumuLoading(onView: onView)
             }
 
-            if type != .loading {
+            if type != .loading && type != .mumuLoading {
                 _ = delay(time, task: {
                     self.tool.dismiss()
                     callBack?()

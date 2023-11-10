@@ -42,6 +42,7 @@ let package = Package(
                     .process("HUD/sources/Checkmark.png"),
                     .process("HUD/sources/Checkmark@2x.png"),
                     .process("HUD/sources/Checkmark@3x.png"),
+                    .process("HUD/sources/ArtisseLoading.gif"),
                 ]),
         
     ],

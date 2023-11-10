@@ -11,6 +11,8 @@ public protocol ProgressHUD {
     func dismiss()
 
     func showLoading(onView view: UIView?, title: String?, subTitle: String?)
+    
+    func showMumuLoading(onView view: UIView?)
 
     func showSuccess(onView view: UIView?, title: String?, subTitle: String?)
 
