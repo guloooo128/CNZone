@@ -131,6 +131,7 @@ extension MBProgressHUD {
     }
     
     func clearBackgroundColor() {
+        bezelView.style = .solidColor
         bezelView.backgroundColor = .clear
     }
 }
