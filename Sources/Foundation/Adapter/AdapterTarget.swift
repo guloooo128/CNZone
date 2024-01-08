@@ -13,6 +13,10 @@ extension AdapterTarget {
     public var fit: CGFloat {
         fitAdapter(self)
     }
+    
+    public var bigFit: CGFloat {
+        bigFitAdapter(self)
+    }
 }
 
 extension Int: AdapterTarget {}

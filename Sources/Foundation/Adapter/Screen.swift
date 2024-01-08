@@ -23,7 +23,15 @@ func fitAdapter(_ attribute: AdapterTarget) -> CGFloat {
 
     let attribute = CGFloat(truncating: attribute as! NSNumber)
 
-    return adjustSize(attribute: attribute)
+    return adjustSize(attribute: attribute, designWidth: designWidth)
+}
+
+func bigFitAdapter(_ attribute: AdapterTarget) -> CGFloat {
+    //    return adjustSizeWithUiDesign(attribute: attribute, UiDesignWidth: designWidth)
+
+    let attribute = CGFloat(truncating: attribute as! NSNumber)
+
+    return adjustSize(attribute: attribute, designWidth: 430.0)
 }
 
 public enum UIAnnotationType: Int {
@@ -31,7 +39,7 @@ public enum UIAnnotationType: Int {
 }
 
 // 用于屏幕设配 等比例方法缩小
-private func adjustSize(attribute: CGFloat) -> CGFloat {
+private func adjustSize(attribute: CGFloat, designWidth: CGFloat = 375.0) -> CGFloat {
     if annotationType == .px {
         let scale = UIScreen.main.scale
         let widthPx = ScreenW * scale
